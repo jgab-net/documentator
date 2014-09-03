@@ -1,0 +1,19 @@
+{
+  "name": "documentator",
+  "version": "1.0.0",
+  "description": "documentación de Endpoints para express 4.*",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgab-net/documentator"
+  },
+  "author": "jgab.net",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jgab-net/documentator/issues"
+  },
+  "homepage": "https://github.com/jgab-net/documentator"
+}
