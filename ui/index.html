@@ -18,7 +18,7 @@
                     <div class="row">
                         <div class="col-md-3" ng-repeat="path in route.paths">
                             <div class="alert" ng-class="{ 'alert-info' : path.method == 'GET', 'alert-danger' : path.method == 'DELETE', 'alert-warning' : path.method == 'POST' }">
-                                {{ path.method }} : {{ route.group }}{{ path.path }}
+                                {{ path.method }} : {{ route.group }}{{ path.path }} {{ path }}
                             </div>
                         </div>
                     </div>

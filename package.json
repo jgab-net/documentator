@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/jgab-net/documentator",
   "dependencies": {
-
+    "conga-annotations": "git://github.com/jgab-net/conga-annotations.git#master"
   }
 }

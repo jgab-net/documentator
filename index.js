@@ -83,6 +83,7 @@ var path = require('path'),
         var registry = new Registry();
 
         registry.registerAnnotation(path.join(__dirname,'lib/api-route-annotation'));
+        registry.registerAnnotation(path.join(__dirname,'lib/api-group-annotation'));
 
         var reader = new Reader(registry);
 
