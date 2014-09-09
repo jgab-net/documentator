@@ -44,6 +44,7 @@ var path = require('path'),
                     path.body = annotation.body.map(__mapModel);
                     path.return = annotation.return.map(__mapModel);
                     path.params = annotation.params;
+                    path.description = annotation.value;
                 }
 
                 return path;
