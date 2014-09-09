@@ -53,7 +53,7 @@ var path = require('path'),
 
     var __mapModel= function(value){
         var match = value.match(/(\w+)Model(s?)/);
-        if(match){
+        if(match && models.hasOwnProperty(match[1].toLowerCase())){
             var model=models[match[1].toLowerCase()];
             model.isArray = match[2]=='s';
             return model;
@@ -94,7 +94,6 @@ var path = require('path'),
             return router.handle.name == 'router';
         });
 
-        console.log(routers.length);
         for(var i=0;i<routers.length; i++){
             var path = routers[i].regexp.toString().replace('/?(?=/|$)/i','').replace('/^\\','').replace(/\\/g,'') || '/';
 
