@@ -29,7 +29,7 @@ var path = require('path'),
     var __compile = function(routes, annotations){
 
         return routes.map(function(route){
-            route.paths.map(function(path){
+            route.paths = route.paths.map(function(path){
 
                 var annotation;
                 for(var i=0; i<annotations[route.group].length; i++){
@@ -48,17 +48,24 @@ var path = require('path'),
 
                 return path;
             });
+            return route;
         })
     };
 
     var __mapModel= function(value){
         var match = value.match(/(\w+)Model(s?)/);
         if(match && models.hasOwnProperty(match[1].toLowerCase())){
-            var model=models[match[1].toLowerCase()];
-            model.isArray = match[2]=='s';
-            return model;
+            return {
+                element: match[1],
+                type: 'MongooseModel',
+                structure: models[match[1].toLowerCase()],
+                array: match[2]==='s'
+            };
         }
-        return value;
+        return {
+            element: value,
+            type: 'Primitive'
+        };
     };
 
     var __clearSchema = function(schema){
@@ -102,7 +109,8 @@ var path = require('path'),
             for(var j=0; j<routers[i].handle.stack.length; j++){
                 paths.push({
                     path: routers[i].handle.stack[j].route.path,
-                    method: Object.keys(routers[i].handle.stack[j].route.methods)[0].toUpperCase()
+                    method: Object.keys(routers[i].handle.stack[j].route.methods)[0].toUpperCase(),
+                    url: (path=='/'?'':path)+routers[i].handle.stack[j].route.path
                 }) ;
             }
 
