@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <style type="text/css">
+
+    </style>
+</head>
+<body ng-app="doc">
+
+    <div class="container">
+        <div class="api list-group" ng-controller="ApiCtrl">
+            <a class="route list-group-item" data-toggle="collapse" href="#{{route.genericId}}" ng-repeat="route in routes">
+                <h4 class="list-group-item-heading"> {{ route.group }} </h4>
+                <div class="list-group-item-text collapse out" id="{{route.genericId}}">
+                    <div class="row">
+                        <div class="col-md-3" ng-repeat="path in route.paths">
+                            <div class="alert" ng-class="{ 'alert-info' : path.method == 'GET', 'alert-danger' : path.method == 'DELETE', 'alert-warning' : path.method == 'POST' }">
+                                {{ path.method }} : {{ route.group }}{{ path.path }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script type="text/javascript">
+
+        angular
+                .module('doc',[])
+                .controller('ApiCtrl',function($scope, $http){
+
+                    $http.get('/api-docs?'+Number(new Date)).success(function(data){
+                        $scope.routes = data;
+                    })
+
+                });
+
+    </script>
+</body>
+</html>

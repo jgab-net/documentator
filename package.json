@@ -11,9 +11,17 @@
     "url": "https://github.com/jgab-net/documentator"
   },
   "author": "jgab.net",
-  "license": "MIT",
+  "license": [
+    {
+      "type": "MIT",
+      "url": "http://fibo.mit-license.org/"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/jgab-net/documentator/issues"
   },
-  "homepage": "https://github.com/jgab-net/documentator"
+  "homepage": "https://github.com/jgab-net/documentator",
+  "dependencies": {
+
+  }
 }
