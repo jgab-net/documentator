@@ -54,13 +54,15 @@ var path = require('path'),
     };
 
     var __mapModel= function(value){
-        var match = value.match(/(\w+)Model(s?)/);
-        if(match && models.hasOwnProperty(match[1].toLowerCase())){
+        var isArray = value instanceof Array;
+        if (isArray) value = value[0];
+        var match = value.match(/(\w+)Model/);
+        if (match && models.hasOwnProperty(match[1].toLowerCase())) {
             return {
                 element: match[1],
                 type: 'MongooseModel',
                 structure: models[match[1].toLowerCase()],
-                array: match[2]==='s'
+                isArray: isArray
             };
         }
         return {
